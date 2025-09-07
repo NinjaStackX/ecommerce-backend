@@ -1,10 +1,9 @@
-import { Category } from "../models/index.js";
+import { Category } from "../../models/index.js";
 
 export const createCategory = async (req, res) => {
   const { name } = req.body;
-  const nameCate = name.toLowerCase();
   const category = await Category.create({
-    name: nameCate,
+    name: name.toLowerCase(),
   });
   res.status(200).json({
     success: true,
@@ -29,3 +28,5 @@ export const deleteAllCategories = async (req, res) => {
     count: ${result.deletedCount} `,
   });
 };
+
+export default createCategory;

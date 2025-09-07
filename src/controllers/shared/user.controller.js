@@ -1,11 +1,11 @@
-import userModel from "../models/user.model.js";
+import userModel from "../../models/user.model.js";
 
 import { compare, hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import {
   authValidationLog,
   authValidationReg,
-} from "../validations/user.validation.js";
+} from "../../validations/user.validation.js";
 
 export const register = async (req, res) => {
   const parsed = authValidationReg.safeParse(req.body);
@@ -15,14 +15,15 @@ export const register = async (req, res) => {
 
   const { name, email, password } = req.body;
   const hashed = await hash(password, 12);
+  let role = "user";
+  if (req.user && req.user == "admin") role = req.body.role;
 
-  const user = await userModel.create({
+  await userModel.create({
     name,
     email,
     password: hashed,
+    role,
   });
-
-  await user.save();
 
   res.status(200).json({
     success: true,
@@ -63,3 +64,4 @@ export const login = async (req, res) => {
     token: token,
   });
 };
+export default register;

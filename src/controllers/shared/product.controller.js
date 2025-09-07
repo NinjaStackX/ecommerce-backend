@@ -1,8 +1,9 @@
-import { Category, Product } from "../models/index.js";
-import { queryBuilder } from "../utils/queryBuilder.js";
-import { productValidation } from "../validations/productValidation.js";
+import { Category, Product } from "../../models/index.js";
+import { queryBuilder } from "../../utils/queryBuilder.js";
+import productValidation from "../../validations/product.validation.js";
 export const createProduct = async (req, res) => {
   const parsed = productValidation.safeParse(req.body);
+
   if (!parsed.success) {
     return res
       .status(400)
@@ -54,3 +55,5 @@ export const deleteProduct = async (req, res) => {};
 export const rateProduct = async (req, res) => {};
 export const createReview = async (req, res) => {};
 export const removeProductImage = async (req, res) => {};
+
+export default createProduct;

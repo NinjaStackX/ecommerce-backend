@@ -9,5 +9,4 @@ const productValidation = z.object({
   rating: z.coerce.number().min(0).max(5),
   inStock: z.coerce.boolean(),
 });
-
 export default productValidation;
