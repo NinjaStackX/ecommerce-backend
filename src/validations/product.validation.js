@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const productValidation = z.object({
+const productValidation = z.object({
   title: z.coerce.string().min(3),
   desc: z.coerce.string(),
   category: z.coerce.string(),
@@ -9,3 +9,5 @@ export const productValidation = z.object({
   rating: z.coerce.number().min(0).max(5),
   inStock: z.coerce.boolean(),
 });
+
+export default productValidation;

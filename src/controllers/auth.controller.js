@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import {
   authValidationLog,
   authValidationReg,
-} from "../validations/authValidation.js";
+} from "../validations/user.validation.js";
 
 export const register = async (req, res) => {
   const parsed = authValidationReg.safeParse(req.body);

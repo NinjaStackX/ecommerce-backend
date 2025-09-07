@@ -1,0 +1,10 @@
+import express from "express";
+const router = express.Router();
+router.route("/auditlog");
+router.route("/category");
+router.route("/message");
+router.route("/order");
+router.route("/notification");
+router.route("/product");
+router.route("/wishlist");
+export default router;

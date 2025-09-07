@@ -48,16 +48,7 @@ export const createProduct = async (req, res) => {
     data: newProduct,
   });
 };
-export const getProducts = async (req, res) => {
-  const { total, page, limit, results } = await queryBuilder(
-    Product,
-    req.query
-  );
 
-  res
-    .status(200)
-    .json({ success: true, total, page, limit, products: results });
-};
 export const updateProduct = async (req, res) => {};
 export const deleteProduct = async (req, res) => {};
 export const rateProduct = async (req, res) => {};

@@ -32,13 +32,9 @@ app.use(cors());
 import authRoutes from "./src/routes/auth.route.js";
 import adminRoutes from "./src/routes/admin.route.js";
 import userRoutes from "./src/routes/user.route.js";
-import audiologRoutes from "./src/routes/auditlog.route.js";
-import notificationRoutes from "./src/routes/notification.route.js";
-import productRoutes from "./src/routes/product.route.js";
-import categoryRoutes from "./src/routes/category.routes.js";
+import sharedRoutes from "./src/routes/shared.route.js";
 import { protect } from "./src/middlewares/protect.js";
 import errorHandler from "./src/middlewares/errorHandler.js";
-import { test } from "./src/config/couldnary.js";
 
 //         <<<<<<<<<<<<<<<<------------------------------------<<<<<<<<<<<<<<<
 
@@ -47,11 +43,8 @@ app.use("/api/auth", authRoutes);
 //app.use(protect);
 app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/auditlog", audiologRoutes);
-app.use("/api/notification", notificationRoutes);
-app.use("/api/product", productRoutes);
-app.use("/api/category", categoryRoutes);
-test();
+app.use("/api/shared", sharedRoutes);
+
 app.use(errorHandler);
 //         <<<<<<<<<<<<<<<<------------------------------------<<<<<<<<<<<<<<<
 

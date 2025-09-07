@@ -12,20 +12,6 @@ export const createCategory = async (req, res) => {
   });
 };
 
-export const getAllCategory = async (req, res) => {
-  const Categories = await Category.find().sort("name");
-  if (Categories.length === 0)
-    return res.status(200).json({
-      success: true,
-      message: "Oops,There are any Category to show it!",
-      Categories: [],
-    });
-  res.status(200).json({
-    success: true,
-    message: "complete get Categories successfully!",
-    Categories,
-  });
-};
 export const deleteCategory = async (req, res) => {
   const { id } = req.params;
   if (!id) throw new Error("the category is not found");

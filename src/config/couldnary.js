@@ -2,8 +2,6 @@ import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 dotenv.config();
 
-export const test = () =>
-  console.log(`Welcome ${process.env.CLOUDINARY_CLOUD_NAME}`);
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
 
