@@ -88,8 +88,14 @@ export const queryBuilder = async (Model, queryParams, defaultFilter = {}) => {
     populateArray.forEach((p) => (query = query.populate(p)));
   }
 
-  // execute
+  //        =======================             =======================
+  //        =======================             =======================
+  //        =======================             =======================
+
+  // execute db
   const results = await query;
+
+  // execute total
   const total = await Model.countDocuments(queryObj);
 
   return { results, total, page, limit };
