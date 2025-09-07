@@ -1,6 +1,6 @@
 import { AuditLog } from "../models/index.js";
 
-export const getAuditLog = async (req, res) => {
+export const getAudioLog = async (req, res) => {
   const auditlog = await AuditLog.find();
   if (!auditlog || auditlog.length === 0) {
     return res.status(403).json({

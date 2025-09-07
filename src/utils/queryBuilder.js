@@ -97,6 +97,5 @@ export const queryBuilder = async (Model, queryParams, defaultFilter = {}) => {
 
   // execute total
   const total = await Model.countDocuments(queryObj);
-
-  return { results, total, page, limit };
+  return { total, page, limit, results };
 };
