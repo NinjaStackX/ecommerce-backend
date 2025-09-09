@@ -50,16 +50,18 @@ export const createProduct = async (req, res) => {
     data: newProduct,
   });
 };
-export const updateProduct =(req,res)=>{
-  const [id,product]= [req.params.id,await Product.findOneById(id)]
-  if(!product) throw new Error("the product is not found!")
-  const parsed = productValidation.safeParse(req.body)
-  if (!parsed.success) throw new Error("Invalid Inputs!:)
-  const  upProduct = parsed.data
+export const updateProduct = async (req, res) => {
+  const id = req.params.id;
+  const product = await Product.findOneById(id);
+  if (!product) throw new Error("the product is not found!");
+  const parsed = productValidation.safeParse(req.body);
+  if (!parsed.success) throw new Error("Invalid Inputs!");
+  const upProduct = parsed.data;
   await Product.findOneByIdAndUpdate(
     id,
-    {$set: {...upProduct}, 
-     {new: true})
-  res.status(200).json(success:true,product_is_updated:upProduct}
-}
+    { $set: { ...upProduct } },
+    { new: true }
+  );
+  res.status(200).json({ success: true, product_is_updated: upProduct });
+};
 export default createProduct;
