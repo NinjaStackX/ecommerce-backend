@@ -35,6 +35,7 @@ export const createProduct = async (req, res) => {
     (await Category.create({ name: category }));
 
   const newProduct = {
+    owner: req.user,
     ...parsed.data,
     category: existingCategory._id,
     mainImage,
@@ -49,11 +50,5 @@ export const createProduct = async (req, res) => {
     data: newProduct,
   });
 };
-
-export const updateProduct = async (req, res) => {};
-export const deleteProduct = async (req, res) => {};
-export const rateProduct = async (req, res) => {};
-export const createReview = async (req, res) => {};
-export const removeProductImage = async (req, res) => {};
 
 export default createProduct;

@@ -26,9 +26,9 @@ export const protect = async (req, res, next) => {
 export const restrictTo = (...roles) => {
   const roleSet = new Set(roles);
   return (req, res, next) => {
-    // if (!roleSet.has(req.user.role)) {
-    //   return res.status(403).json({ error: "Permission denied" });
-    // }
+    if (!roleSet.has(req.user.role)) {
+      return res.status(403).json({ error: "Permission denied" });
+    }
     next();
   };
 };

@@ -2,9 +2,13 @@ import { model, Schema } from "mongoose";
 
 const auditLogSchema = new Schema(
   {
-    action: String,
+    action: {
+      type: String,
+      enum: ["Create", "Read", "Update", "Delete"],
+    },
+
     performedBy: { type: Schema.Types.ObjectId, ref: "User" },
-    target: String,
+    target: { type: Schema.Types.ObjectId, ref: "User" },
     meta: Object,
   },
   { timestamps: true }

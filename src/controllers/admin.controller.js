@@ -3,10 +3,10 @@ import { compare, hash } from "bcrypt";
 import { createProduct } from "./shared/product.controller.js";
 const indexes = [
   "audioLog",
+  "wishlist",
   "product",
   "user",
   "auth",
-  "wishlist",
   "category",
   "message",
   "order",
@@ -15,7 +15,7 @@ const indexes = [
 
 export const readAll = async (req, res) => {
   const type = req.query.type ? req.query.type.trim() : "";
-  const myrestricts = indexes.slice(0);
+  const myrestricts = indexes.slice(2);
 
   if (type.length < 1 || !myrestricts.includes(type))
     throw new Error("Invaild Query Inputs ");
@@ -26,18 +26,10 @@ export const readAll = async (req, res) => {
 };
 export const createAny = async (req, res) => {
   const type = req.query.type ? req.query.type.trim() : "";
-  const myrestricts = indexes;
+  const myrestricts = indexes.slice(5);
   if (type.length < 1 || !myrestricts.includes(type))
     throw new Error("Invaild Query Inputs ");
 
   const { default: create } = await import(`./shared/${type}.controller.js`);
   await create(req, res);
 };
-
-// export const getAdminStats = async (req, res) => {};
-// export const deleteOrderAdmin = async (req, res) => {};
-// export const getAdminDetails = async (req, res) => {};
-// export const getSalesTrend = async (req, res) => {};
-// export const getAdminOverview = async (req, res) => {};
-// export const updateOrderStatus = async (req, res) => {};
-// export const getOrderByIdAdmin = async (req, res) => {};

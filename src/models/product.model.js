@@ -1,12 +1,11 @@
 import mongoose, { model } from "mongoose";
 const reviewSchema = new mongoose.Schema(
   {
-    user: {
+    reviewer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    name: { type: String, required: true },
     rating: { type: Number, required: true, min: 1, max: 5 },
     comment: { type: String, required: true },
   },
@@ -24,6 +23,11 @@ const productSchema = mongoose.Schema(
     //
     //
     //
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
